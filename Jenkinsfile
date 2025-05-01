@@ -1,9 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'python:3.10'
-        }
-    }
+    agent any
     stages {
         stage('Checkout') {
             steps {
@@ -12,8 +8,8 @@ pipeline {
         }
         stage('Install') {
             steps {
-                sh 'pip install --upgrade pip'
-                sh 'pip install -r requierements.txt'
+                sh 'python3 -m pip install --upgrade pip'
+                sh 'pip install -r requirements.txt'
             }
         }
         stage('Test') {
