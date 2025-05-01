@@ -2,6 +2,12 @@ pipeline {
     agent { label 'python-agent' }
 
     stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/Thadashy08/python-project.git'
+            }
+        }
+
         stage('Verify Python') {
             steps {
                 sh 'which python3'
@@ -11,8 +17,8 @@ pipeline {
 
         stage('Install') {
             steps {
-                sh 'python3 -m pip install --upgrade pip'
-                sh 'pip install -r requirements.txt'
+                sh 'python3 -m pip install --upgrade pip --break-system-packages'
+                sh 'pip install -r requirements.txt --break-system-packages'
             }
         }
 
