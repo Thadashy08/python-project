@@ -24,7 +24,7 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh 'pytest --html=report.html || true'
+                sh 'PATH=$PATH:/home/jenkins/.local/bin pytest --html=report.html'
             }
         }
     }
