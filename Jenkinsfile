@@ -1,5 +1,9 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'python:3.10'
+        }
+    }
     stages {
         stage('Checkout') {
             steps {
@@ -8,13 +12,19 @@ pipeline {
         }
         stage('Install') {
             steps {
-                sh 'pip install -r requirements.txt'
+                sh 'pip install --upgrade pip'
+                sh 'pip install -r requierements.txt'
             }
         }
         stage('Test') {
             steps {
                 sh 'pytest --html=report.html'
             }
+        }
+    }
+    post {
+        always {
+            archiveArtifacts artifacts: 'report.html', fingerprint: true
         }
     }
 }
