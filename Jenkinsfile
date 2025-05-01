@@ -1,6 +1,7 @@
 pipeline {
     agent { label 'python-agent' }
 
+    stages {
         stage('Verify Python') {
             steps {
                 sh 'which python3'
