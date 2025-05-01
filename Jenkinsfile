@@ -24,7 +24,11 @@ pipeline {
 
         stage('Test') {
             steps {
-                sh 'PATH=$PATH:/home/jenkins/.local/bin pytest --html=report.html'
+                sh '''
+                    export PATH=$PATH:/home/jenkins/.local/bin
+                    pytest --html=report.html
+                '''
+
             }
         }
     }
