@@ -1,11 +1,6 @@
 pipeline {
     agent any
     stages {
-        stage('Checkout') {
-            steps {
-                git 'https://github.com/Thadashy08/python-project.git'
-            }
-        }
         stage('Install') {
             steps {
                 sh 'python3 -m pip install --upgrade pip'
