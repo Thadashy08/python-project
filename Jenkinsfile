@@ -1,13 +1,6 @@
 pipeline {
     agent { label 'python-agent' }
 
-    stages {
-        stage('Checkout') {
-            steps {
-                git branch: 'main', git 'https://github.com/Thadashy08/python-project.git'
-            }
-        }
-
         stage('Verify Python') {
             steps {
                 sh 'which python3'
